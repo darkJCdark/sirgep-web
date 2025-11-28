@@ -1,0 +1,101 @@
+# SIRGEP - Gitignore
+
+# Carpetas de configuración de IDE
+.vs/
+.vscode/
+nbproject/
+build/
+
+# Targets de Maven/Java
+/Sirgep/SirgepMain/target/
+/SirgepSolution/Sirgep/target/
+/SirgepSolution/SirgepDA/target/
+/SirgepSolution/SirgepDBManager/target/
+/SirgepSolution/SirgepDomain/target/
+/SirgepSolution/SirgepBusiness/target/
+/SirgepSolution/SirgepWS/target/
+/SirgepSolution/CalculadoraRS/target/
+/SirgepSolution/Test/nbproject/private/
+
+# Archivos de NetBeans
+/SirgepSolution/SirgepDA/nbproject/
+/SirgepSolution/SirgepBusiness/nbproject/
+/SirgepSolution/SirgepWS/nbproject/
+
+# Archivos sensibles
+Sirgep/SirgepPresentacion/DriveAuth/credentials.json
+
+# Archivos temporales y de backup
+*.swp
+*.*~
+*.TMP
+project.lock.json
+.DS_store
+*.pyc
+*.log
+*.orig
+*.merge
+*.rej
+
+# Archivos de usuario específicos
+*.suo
+*.user
+*.userosscache
+*.cln.docstates
+
+# Archivos binarios y temporales
+*.dll
+*.pdb
+*.cache
+*.exe
+*.datasource
+
+# Directorios de compilación
+**/bin/
+**/obj/
+[Bb]in/
+[Oo]bj/
+bld/
+x64/
+x86/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+
+# Archivos de MSBuild
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Paquetes NuGet
+/packages/
+/**/packages/
+Sirgep/packages/
+
+# Archivos de publicación
+*.Publish.xml
+*.pubxml
+*.publishproj
+
+# Archivos de profiling y debugging
+*.psess
+*.vsp
+*.vspx
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Archivos de servicios generados automáticamente por Connected Services
+**/Connected Services/**/configuration*.svcinfo
+**/Connected Services/**/Reference*.svcmap
+**/Connected Services/**/*.disco
+**/Connected Services/**/*.wsdl
+**/Connected Services/**/*.xsd
+Connected Services/**/Reference.cs
+*.svcinfo
+*.disco
+*.svcmap
+*.wsdl
+*.xsd
