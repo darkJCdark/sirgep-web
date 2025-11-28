@@ -1,0 +1,451 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainLayout.master.cs" Inherits="SirgepPresentacion.MainLayout" %>
+
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    </title>
+
+    <!-- Bootstrap CSS -->
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap icons -->
+    <link href="/Content/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Estilos propios -->
+    <link href="/Content/site.css" rel="stylesheet" />
+    <!-- Bootstrap JS (opcional) -->
+    <script src="/Scripts/bootstrap.bundle.min.js"></script>
+
+    <asp:ContentPlaceHolder ID="Encabezado" runat="server" />
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
+    <form id="form1" runat="server" style="flex: 1;">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg" style="background-color: #f10909;">
+
+            <div class="d-flex align-items-center justify-content-start py-2 px-4">
+                <asp:LinkButton ID="lnkLogo" runat="server" OnClick="lnkLogo_Click" CssClass="text-decoration-none" CausesValidation="false">
+                    <div class="d-flex align-items-center me-3">
+                        <img src="/Images/grl/Escudo_Región_Lima_recortado.PNG" alt="Escudo Región Lima" class="navbar-brand-img me-3" style="height: 40px;" />
+                        <div class="text-white">
+                            <strong>Gobierno Regional de Lima</strong>
+                        </div>
+                    </div>
+                </asp:LinkButton>
+
+                <!-- Separador -->
+                <div class="vr bg-white mx-3" style="height: 40px; width: 2px;"></div>
+                <!-- Nombre del sistema -->
+                <div class="text-white me-3">
+                    <strong>SIRGEP</strong>
+                </div>
+            </div>
+
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- Menú Administrador -->
+                    <li id="liAdminMenu" runat="server" class="nav-item dropdown">
+                        <a runat="server" class="nav-link dropdown-toggle" id="adminMenu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrador</a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <asp:LinkButton ID="lnkEspaciosAdmin" runat="server" CssClass="dropdown-item" OnClick="lnkEspaciosAdmin_Click" OnClientClick="mostrarModalCarga('Cargando...', 'Redireccionando a Gestión de Espacios.');">Espacios</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkEventosAdmin" runat="server" CssClass="dropdown-item" OnClick="lnkEventosAdmin_Click" OnClientClick="mostrarModalCarga('Cargando...', 'Redireccionando a Gestión de Eventos.');">Eventos</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkCerrarSesionAdmin" runat="server" CssClass="dropdown-item" OnClick="lnkCerrarSesion_Click" OnClientClick="mostrarModalCarga('Cerrando sesión...', 'Su sesión se está cerrando. Un momento. .');">Cerrar Sesión</asp:LinkButton></li>
+                        </ul>
+                    </li>
+                    <!-- Menú Usuario -->
+                    <li id="liUsuarioMenu" runat="server" class="nav-item dropdown">
+                        <a runat="server" class="nav-link dropdown-toggle" id="compradorMenu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Comprador</a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <asp:LinkButton ID="lnkPerfilComprador" runat="server" CssClass="dropdown-item" OnClick="lnkPerfil_Click" OnClientClick="mostrarModalCarga('Cargando...', 'Redireccionando a Mi Perfil.');">Perfil</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkReservasComprador" runat="server" CssClass="dropdown-item" OnClick="lnkReservasComprador_Click" OnClientClick="mostrarModalCarga('Cargando...', 'Redireccionando a Mis Reservas.');">Reservas</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkEntradasComprador" runat="server" CssClass="dropdown-item" OnClick="lnkEntradasComprador_Click" OnClientClick="mostrarModalCarga('Cargando...', 'Redireccionando a Mis Entradas.');">Entradas</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkCerrarSesionComprador" runat="server" CssClass="dropdown-item" OnClick="lnkCerrarSesion_Click" OnClientClick="mostrarModalCarga('Cerrando sesión...', 'Su sesión se está cerrando. Un momento.');">Cerrar Sesión</asp:LinkButton></li>
+                        </ul>
+                    </li>
+                    <!-- Botón Ingresar -->
+                    <li id="liIngresar" runat="server" class="nav-item d-flex align-items-center me-4">
+                        <asp:Button ID="btnIngresar" runat="server" CssClass="btn btn-dark fw-bold principal-invitado-btn ms-3" Text="Ingresar" OnClick="btnIngresar_Click" CausesValidation="false" />
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Contenido principal -->
+        <div class="container mt-4">
+            <asp:ContentPlaceHolder ID="Contenido" runat="server" />
+        </div>
+
+
+        <!-- Modal de Confirmación -->
+        <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header modal-header-rojo text-white">
+                        <h5 class="modal-title" id="modalConfirmacionLabel">Ventana de confirmación</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+
+                    <div class="modal-body d-flex align-items-center modal-body-confirmacion">
+                        <div class="icono-confirmacion me-3">
+                            <div class="icono-circulo">
+                                <i class="bi bi-info-lg fs-1"></i>
+                            </div>
+                        </div>
+                        <div id="modalConfirmacionBody" class="fs-5">
+                            ¿Está seguro que desea eliminar este registro?
+               
+                        </div>
+                    </div>
+
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>No</em></button>
+                        <button type="button" id="btnConfirmarAccion" class="btn btn-dark px-4"><em>Sí</em></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Error -->
+        <div class="modal fade" id="modalError" tabindex="-1" aria-labelledby="modalErrorLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header modal-header-rojo text-white">
+                        <h5 class="modal-title" id="modalErrorLabel">Error</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+
+                    <div class="modal-body d-flex align-items-center modal-body-confirmacion">
+                        <div class="icono-confirmacion me-3">
+                            <div class="icono-circulo">
+                                <i class="bi bi-exclamation-lg fs-1"></i>
+                            </div>
+                        </div>
+                        <div id="modalErrorBody" class="fs-5">
+                            Ha ocurrido un error inesperado.
+               
+                        </div>
+                    </div>
+
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>Regresar</em></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Acción Exitosa -->
+        <div class="modal fade" id="modalExito" tabindex="-1" aria-labelledby="modalExitoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header modal-header-rojo text-white">
+                        <h5 class="modal-title" id="modalExitoLabel">¡Éxito!</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+
+                    <div class="modal-body d-flex align-items-center modal-body-confirmacion">
+                        <div class="icono-confirmacion me-3">
+                            <div class="icono-circulo">
+                                <i class="bi bi-check-lg fs-1"></i>
+                            </div>
+                        </div>
+                        <div id="modalExitoBody" class="fs-5">
+                            La acción se realizó correctamente.
+               
+                        </div>
+                    </div>
+
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>Cerrar</em></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Feedback -->
+        <div class="modal fade" id="modalFeedback" tabindex="-1" aria-labelledby="modalFeedbackLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header modal-header-rojo text-white">
+                        <h5 class="modal-title" id="modalFeedbackLabel">Feedback</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <!-- Aquí puedes agregar campos para el feedback, como estrellas de calificación y un textarea -->
+                        <p>Por favor, califica tu experiencia:</p>
+                        <div id="estrellasFeedback" class="mb-3">
+                            <span class="estrellaFeedback" data-valor="1" style="cursor: pointer; font-size: 3rem;">&#9734;</span>
+                            <span class="estrellaFeedback" data-valor="2" style="cursor: pointer; font-size: 3rem;">&#9734;</span>
+                            <span class="estrellaFeedback" data-valor="3" style="cursor: pointer; font-size: 3rem;">&#9734;</span>
+                            <span class="estrellaFeedback" data-valor="4" style="cursor: pointer; font-size: 3rem;">&#9734;</span>
+                            <span class="estrellaFeedback" data-valor="5" style="cursor: pointer; font-size: 3rem;">&#9734;</span>
+                            <asp:HiddenField ID="calificacionFeedback" runat="server" Value="0" />
+                        </div>
+                        <div class="mb-3">
+                            <asp:TextBox ID="txtComentarioFeedback" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="1" placeholder="Escribe tu comentario (opcional)" Style="resize: none; overflow: hidden;" />
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>Cerrar</em></button>
+                        <asp:Button ID="btnEnviarFeedback" runat="server" CssClass="btn btn-dark px-4" Text="Enviar" OnClick="btnEnviarFeedback_Click" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Carga -->
+        <div class="modal fade" id="modalCarga" tabindex="-1" aria-labelledby="modalCargaLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header modal-header-rojo text-white">
+                        <h5 class="modal-title" id="modalCargaLabel">Cargando...</h5>
+                    </div>
+
+                    <div class="modal-body d-flex flex-column align-items-center justify-content-center">
+                        <img src="/Images/img/loading.gif" alt="Cargando..." style="width: 60px; height: 60px; margin-bottom: 16px;" />
+                        <div id="modalCargaBody" class="fs-5 text-center">
+                            La acción está cargando, espere un momento.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Sesión Expirada -->
+<div class="modal fade" id="modalSesionExpirada" tabindex="-1" aria-labelledby="modalSesionExpiradaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header modal-header-rojo text-white">
+                <h5 class="modal-title" id="modalSesionExpiradaLabel">Sesión a punto de expirar</h5>
+            </div>
+            <div class="modal-body text-center">
+                Tu sesión está a punto de expirar por inactividad.<br>
+                ¿Deseas continuar?
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-dark px-4" onclick="renovarSesion()">Continuar sesión</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <asp:HiddenField ID="hdnTipoUsuario" runat="server" />
+    </form>
+</body>
+<!-- Pie de página -->
+<footer class="footer text-center text-white py-2 mt-auto" style="background-color: #f10909;">
+    <small>2025 © SánchezLovers - Programación 3. Todos los derechos reservados</small>
+</footer>
+
+
+<script>
+    //Funcion para cerrar los modals de carga
+    window.addEventListener("pageshow", function (event) {
+        // Evitar modal si vienes del historial
+        if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
+            cerrarModalCarga();
+
+            // Remover backdrop y clase que deja Bootstrap
+            document.body.classList.remove("modal-open");
+
+            // Elimina backdrop si quedó alguno (por precaución)
+            document.querySelectorAll(".modal-backdrop").forEach(function (el) {
+                el.remove();
+            });
+
+            // Asegura que el modal esté oculto visualmente también
+            document.getElementById("modalCarga").classList.remove("show");
+            document.getElementById("modalCarga").style.display = "none";
+        }
+    });
+
+
+
+    // Lógica para mostrar el modal de feedback
+    function mostrarModalFeedback() {
+        var modal = new bootstrap.Modal(document.getElementById('modalFeedback'));
+        modal.show();
+    }
+
+    // Lógica para estrellas de feedback
+    let calificacionFeedback = 0;
+    document.querySelectorAll('#estrellasFeedback .estrellaFeedback').forEach(function (estrella) {
+        estrella.addEventListener('mouseenter', function () {
+            pintarEstrellasFeedback(this.getAttribute('data-valor'));
+        });
+        estrella.addEventListener('mouseleave', function () {
+            pintarEstrellasFeedback(calificacionFeedback);
+        });
+        estrella.addEventListener('click', function () {
+            calificacionFeedback = this.getAttribute('data-valor');
+            pintarEstrellasFeedback(calificacionFeedback);
+            document.getElementById('<%= calificacionFeedback.ClientID %>').value = calificacionFeedback;
+        });
+    });
+
+    function pintarEstrellasFeedback(valor) {
+        document.querySelectorAll('#estrellasFeedback .estrellaFeedback').forEach(function (estrella) {
+            if (estrella.getAttribute('data-valor') <= valor) {
+                estrella.innerHTML = '&#9733;'; // estrella llena
+            } else {
+                estrella.innerHTML = '&#9734;'; // estrella vacía
+            }
+        });
+    }
+    function redirigirPaginaPrincipal() {
+        window.location.href = '/Presentacion/Inicio/PrincipalInvitado.aspx';
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        var modalFeedback = document.getElementById('modalFeedback');
+        if (modalFeedback) {
+            modalFeedback.addEventListener('hidden.bs.modal', function () {
+                redirigirPaginaPrincipal();
+            });
+        }
+    });
+
+    //Mostrar modals separados
+    //Se podría generalizar a una sola función, pero debido a que la implementación es extensa, se condieró más apropiado 
+    //trabajarlo como funciones distinta en vez de pasar el nombre como parámetro (el asp.net podría causar conflictos al pasarlo a html)
+    function mostrarModalExito() {
+        var modal = new bootstrap.Modal(document.getElementById('modalExito'));
+        modal.show();
+    }
+    function mostrarModalError() {
+        var modal = new bootstrap.Modal(document.getElementById('modalError'));
+        modal.show();
+    }
+    function mostrarModalConfirmacion() {
+        var modal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
+        modal.show();
+    }
+    function mostrarModalCarga() {
+        var modal = new bootstrap.Modal(document.getElementById('modalCarga'));
+        modal.show();
+    }
+    //Sobrecarga de funciones para mostrar mensajes personalizados
+    function mostrarModalExito(titulo, mensaje) {
+        document.getElementById("modalExitoLabel").innerText = titulo;
+        document.getElementById("modalExitoBody").innerText = mensaje;
+        var myModal = new bootstrap.Modal(document.getElementById('modalExito'));
+        myModal.show();
+    }
+    function mostrarModalError(titulo, mensaje) {
+        document.getElementById("modalErrorLabel").innerText = titulo;
+        document.getElementById("modalErrorBody").innerText = mensaje;
+        var myModal = new bootstrap.Modal(document.getElementById('modalError'));
+        myModal.show();
+    }
+    function mostrarModalConfirmacion(titulo, mensaje) {
+        document.getElementById("modalConfirmacionLabel").innerText = titulo;
+        document.getElementById("modalConfirmacionBody").innerText = mensaje;
+        var myModal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
+        myModal.show();
+    }
+    function mostrarModalCarga(titulo, mensaje) {
+        //Evita que aparezca al cargar de la cache (es decir, para que no se abra y se quede bloqueado al retroceder la pagina)
+        if (performance.getEntriesByType("navigation")[0].type === "back_forward") return;
+        document.getElementById("modalCargaLabel").innerText = titulo;
+        document.getElementById("modalCargaBody").innerText = mensaje;
+        var myModal = new bootstrap.Modal(document.getElementById('modalCarga'));
+        myModal.show();
+    }
+    // Funciones para cerrar modals
+    function cerrarModalCarga() {
+        var modalElement = document.getElementById('modalCarga');
+        var modalInstance = bootstrap.Modal.getInstance(modalElement);
+        if (modalInstance) {
+            modalInstance.hide();
+        }
+    }
+
+    // --- Control de advertencia de expiración de sesión con reinicio por actividad ---
+
+    function mostrarModalSesionExpirada() {
+        var modal = new bootstrap.Modal(document.getElementById('modalSesionExpirada'));
+        modal.show();
+
+        // Si no responde en 30 segundos, cerramos sesión automáticamente
+        setTimeout(function () {
+            cerrarSesionPorInactividad();
+        }, 30 * 1000);
+    }
+
+    function renovarSesion() {
+        // Simplemente reinicia el temporizador
+        iniciarTemporizadorSesion();
+
+        // Cierra el modal si sigue visible
+        var modal = bootstrap.Modal.getInstance(document.getElementById('modalSesionExpirada'));
+        if (modal) modal.hide();
+    }
+
+    function cerrarSesionPorInactividad() {
+        // Puedes llamar a un botón que ya hace logout
+        var cerrarSesionBtn = document.getElementById('<%= lnkCerrarSesionAdmin.ClientID %>') || 
+            document.getElementById('<%= lnkCerrarSesionComprador.ClientID %>');
+        if (cerrarSesionBtn) {
+            cerrarSesionBtn.click();
+        } else {
+            // Si no hay botón, redirige por defecto
+            window.location.href = '/Presentacion/Inicio/LogIn.aspx';
+        }
+    }
+
+
+    // Tiempo de expiración en milisegundos (30 minutos)
+    var sessionTimeout = 30 * 60 * 1000;
+    // Mostrar el modal 30 segundos antes de expirar
+    var warningTime = sessionTimeout - (30 * 1000);
+
+    var sessionWarningTimer = null;
+
+    function iniciarTemporizadorSesion() {
+        if (sessionWarningTimer) clearTimeout(sessionWarningTimer);
+        sessionWarningTimer = setTimeout(function () {
+            mostrarModalSesionExpirada();
+        }, warningTime);
+    }
+
+    // Reinicia el temporizador con cualquier actividad relevante
+    function reiniciarTemporizadorSesion() {
+        iniciarTemporizadorSesion();
+    }
+
+    // Asociar eventos de usuario para reiniciar el temporizador
+    ['click', 'mousemove', 'keydown', 'mousedown', 'touchstart'].forEach(function (evt) {
+        document.addEventListener(evt, reiniciarTemporizadorSesion, true);
+    });
+
+    // Obtiene el tipo de usuario desde el campo oculto
+    function esUsuarioRegistrado() {
+        var tipoUsuario = document.getElementById('<%= hdnTipoUsuario.ClientID %>').value;
+        // Ajusta el valor según tu lógica: por ejemplo, "Invitado" o "" para no registrado
+        return tipoUsuario && tipoUsuario !== "Invitado";
+    }
+
+    // Solo inicia el temporizador si el usuario está registrado
+    if (esUsuarioRegistrado()) {
+        iniciarTemporizadorSesion();
+    }
+</script>
+</html>

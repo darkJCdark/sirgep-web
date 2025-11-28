@@ -1,0 +1,497 @@
+﻿﻿ /*
+    Aca va el CSS personalizado de la aplicacion (si hiciera falta)
+*/
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.btn-sm {
+    margin: 0 2px;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+/* Asegura que el body ocupe toda la altura de la ventana */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    flex: 1;
+}
+
+/* El contenedor principal debe crecer dinámicamente */
+.container {
+    flex: 1;
+}
+
+/* El footer se posiciona al final */
+.footer {
+    background-color: #f10909;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+}
+
+.recuperar-form-block {
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+    border-radius: 12px;
+    background: #fff;
+    padding: 40px 30px 32px 30px;
+    box-shadow: 0 0 16px 0 rgba(0,0,0,0.08);
+}
+
+.modal-header.modal-header-rojo {
+    background-color: #f10909 !important;
+}
+
+.modal-body-confirmacion {
+    min-height: 150px;
+}
+
+.icono-confirmacion .icono-circulo {
+    width: 60px;
+    height: 60px;
+    background-color: #ffc107;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icono-confirmacion .icono-texto {
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.header-link {
+    padding: 4px 12px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+    .header-link:hover {
+        background: rgba(255,255,255,0.12);
+        text-decoration: none;
+    }
+/* Centrado vertical y horizontal del contenido principal */
+.principal-wrapper {
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 1.2rem;
+    padding: 2.5rem 2rem;
+}
+
+/* SirgepPresentacion/Content/site.css */
+.modal-header-rojo {
+    background: #f10909 !important;
+    color: #fff !important;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+    .modal-header-rojo .modal-title {
+        font-weight: bold;
+        font-size: 1.25rem;
+    }
+
+    .modal-header-rojo .btn-close {
+        filter: invert(1) grayscale(1) brightness(2);
+    }
+
+.icono-confirmacion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Título grande y centrado */
+.principal-title {
+    font-size: 2.7rem;
+    font-weight: bold;
+}
+
+/* Subtítulo más grande */
+.principal-subtitle {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.icono-circulo {
+    width: 56px;
+    height: 56px;
+    background: #ffc107;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icono-texto {
+    color: #222;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.modal-body-confirmacion {
+    font-size: 1.25rem;
+    color: #222;
+}
+
+.modal-footer .btn {
+    min-width: 90px;
+    font-style: italic;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    background: #232426;
+    border: none;
+}
+
+    .modal-footer .btn:focus, .modal-footer .btn:active {
+        box-shadow: none;
+    }
+
+.btn-metodo {
+    border: 2px solid #ccc;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    min-width: 100px;
+    text-align: center;
+}
+
+    .btn-metodo.selected, .btn-metodo:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 2px #007bff33;
+    }
+
+    .btn-metodo img {
+        display: block;
+        margin: 0 auto 5px auto;
+    }
+
+.columna-peq {
+    width: 35px;
+}
+
+
+/* Título principal */
+.titulo-principal {
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+}
+
+/* Filtros y búsqueda */
+.busqueda-filtros {
+    margin-bottom: 36px;
+}
+
+.busqueda {
+    margin-bottom: 40px;
+}
+
+.input-busqueda {
+    width: 100%;
+    max-width: 580px;
+    font-size: 1em;
+    padding: 6.5px 20px;
+    border: 2.5px solid #222;
+    border-radius: 12px;
+    background: #fafafa;
+    transition: border-color 0.2s;
+}
+
+    .input-busqueda:focus {
+        border-color: #b71c1c;
+        outline: none;
+    }
+
+    .input-busqueda.deshabilitado {
+        background: #e0e0e0;
+        border-color: #999;
+        color: #666;
+        cursor: not-allowed;
+    }
+
+.filtros-label {
+    font-weight: bold;
+    font-size: 1.35em;
+    margin-right: 5px;
+}
+
+.filtros {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.filtro-select {
+    font-size: 1em;
+    padding: 6.5px 5px;
+    border: 2px solid #222;
+    border-radius: 10px;
+    min-width: 150px;
+    background: #fff;
+}
+
+.filtro-activos-checkbox {
+    position: relative;
+    width: 185px;
+    margin-left: 0;
+}
+
+.input-filtro {
+    width: 100%;
+    font-size: 1em;
+    padding: 6.5px 50px 6.5px 8px;
+    border: 2px solid #222;
+    border-radius: 10px;
+    background: #fff;
+    box-sizing: border-box;
+    color: #222;
+}
+
+.checkbox-filtro {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+
+    .checkbox-filtro input[type="checkbox"] {
+        transform: scale(1.9);
+        cursor: pointer;
+    }
+
+
+/* === ESTILO UNIFICADO PARA TABLA DE RESERVAS Y GRIDVIEW === */
+.tabla-reservas,
+.tabla-reservas table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #f9f9f9;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+    .tabla-reservas th,
+    .tabla-reservas td {
+        border: 1px solid #e0e0e0;
+        padding: 16px 12px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .tabla-reservas th {
+        background: #e0e0e0;
+        font-weight: bold;
+        font-size: 1.08em;
+    }
+
+/* Íconos */
+.icono-abrir {
+    width: 26px;
+    height: 26px;
+}
+
+.form-control.filtro-fecha {
+    font-size: 1em;
+    padding: 6.5px 6px;
+    border: 2px solid #222;
+    border-radius: 10px;
+    width: 130px;
+    background: #fff;
+}
+
+#calendar-block {
+    background: #fff;
+    border: 1px solid #d1d1d1;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border-radius: 10px;
+    padding: 24px 18px 18px 18px;
+    margin: 0 auto;
+    max-width: 1000px;
+    width: 100%;
+    overflow-x: auto;
+}
+
+#calendar {
+    width: 100%;
+    min-height: 400px;
+    height: auto;
+    max-width: 98vw;
+    margin: 0 auto;
+    transition: max-width 0.3s, height 0.3s;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    #calendar-block {
+        padding: 2px 0 2px 0;
+        max-width: 100vw;
+        min-width: 0;
+    }
+
+    #calendar {
+        min-width: 340px;
+        width: 100%;
+        font-size: 1em;
+    }
+
+    .fc-toolbar-title {
+        font-size: 1em !important;
+    }
+
+    .fc .fc-button {
+        padding: 0.2em 0.4em !important;
+        font-size: 0.9em !important;
+    }
+}
+
+.export-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Días y encabezados de mes: sin subrayado ni cursor de selección */
+#calendar a {
+    color: inherit !important;
+    text-decoration: none !important;
+    cursor: default !important;
+}
+
+#calendar td, #calendar th {
+    user-select: none;
+}
+
+/* Hace que todo el contenido de los eventos (reservas) sea clickeable */
+.fc-event, .fc-event *, .fc-event-main, .fc-event-title, .fc-event-time, .fc-event-main-frame {
+    cursor: pointer !important;
+}
+
+/* Asegura que los enlaces dentro del evento no tengan subrayado ni color azul */
+.fc-event a {
+	color: inherit !important;
+	text-decoration: none !important;
+	cursor: pointer !important;
+}
+
+.fc-event:hover {
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+	background-color: #e9ecef;
+	cursor: pointer !important;
+}
+
+.disabled-button {
+    pointer-events: none;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.filtro-fecha-espacio {
+    font-size: 0.95em;
+    padding: 6.5px 6px;
+    border: 2px solid #222;
+    border-radius: 10px;
+    width: 200px;
+    background: #fff;
+    appearance: none; /* Para que no tome el estilo del sistema operativo */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: auto;
+}
+.image-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    width: 24px; /* o el tamaño que desees */
+    height: 24px;
+}
+
+.image-button:hover {
+    filter: brightness(0.7);
+}
+
+/* Estilo para la card de evento */
+.evento-card {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid #333;
+    border-radius: 12px;
+    background: #fff;
+    padding: 18px 24px;
+    margin: 12px 0;
+    min-height: 180px;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.evento-img img {
+    width: 140px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 24px;
+}
+
+.evento-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.evento-titulo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.evento-ubicacion {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.evento-descripcion {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.evento-btn-wrapper {
+    text-align: right;
+}
+
+.img-detalle-evento {
+    width: 340px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    display: block;
+}

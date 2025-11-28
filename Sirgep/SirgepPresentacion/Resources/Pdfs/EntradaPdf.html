@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Detalle de Entrada</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #333;
+        }
+
+        h1 {
+            color: #f10909;
+        }
+
+        .section {
+            margin-bottom: 20px;
+            border: none;
+        }
+
+        .section-header {
+            background-color: #f10909;
+            color: white;
+            padding: 8px 12px;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .col {
+            flex: 1 1 30%;
+            min-width: 250px;
+            margin-bottom: 8px;
+            padding-right: 15px;
+        }
+
+        .col.full {
+            flex: 1 1 100%;
+        }
+
+        .label {
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .value {
+            margin-left: 5px;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabecera con logo a la izquierda y texto a la derecha usando tabla (compatible con PDF) -->
+    <table style="width: 100%; margin-bottom: 20px; border-collapse: collapse;">
+        <tr>
+            <td style="width: 40px; padding: 0; text-align: right; vertical-align: middle;">
+                <img src="{RUTA_LOGO}" alt="Escudo Región Lima" style="height: 40px; display: block; margin: 0;" />
+            </td>
+            <td style="text-align: left; vertical-align: middle;">
+                <div style="font-size: 14pt; font-weight: bold; color: black;">
+                    GOBIERNO REGIONAL DE LIMA | SIRGEP
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <br />
+    <h1 style="color: black; text-align: center;">
+        Constancia de Entrada #<span id="lblNumEntrada" style="color: black;">{NUMERO_ENTRADA}</span>
+    </h1>
+
+    <!-- Datos del Evento -->
+    <div class="section">
+        <div class="section-header">Datos del Evento</div>
+        <div class="row">
+            <div class="col" style="width: 33%;">
+                <div class="col"><span class="label">Nombre: </span><span class="value" id="lblEvento">{NOMBRE_EVENTO}</span></div>
+                <div><span class="label">Ubicación: </span><span class="value" id="lblUbicacion">{UBICACION}</span></div>
+                <div class="col"><span class="label">Distrito: </span><span class="value" id="lblDistrito">{DISTRITO}</span></div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <!-- Datos de la Función -->
+    <div class="section">
+        <div class="section-header">Datos de la Función</div>
+        <div class="row">
+            <div class="col"><span class="label">Fecha: </span><span class="value" id="lblFechaFuncion">{FECHA_FUNCION}</span></div>
+            <div class="col"><span class="label">Hora Inicio: </span><span class="value" id="lblHoraInicio">{HORA_INICIO}</span></div>
+            <div class="col"><span class="label">Hora Fin: </span><span class="value" id="lblHoraFin">{HORA_FIN}</span></div>
+        </div>
+    </div>
+    <br />
+    <!-- Datos del Comprador -->
+    <div class="section">
+        <div class="section-header">Datos del Comprador</div>
+        <div class="row">
+            <div class="col"><span class="label">Nombres: </span><span class="value" id="lblNombres">{NOMBRES}</span></div>
+            <div class="col"><span class="label">Apellidos: </span><span class="value" id="lblApellidos">{APELLIDOS}</span></div>
+            <div class="col"><span class="label">Correo: </span><span class="value" id="lblCorreo">{CORREO}</span></div>
+        </div>
+        <div class="row">
+            <div class="col"><span class="label">Tipo de Documento: </span><span class="value" id="lblTipoDocumento">{TIPO_DOCUMENTO}</span></div>
+            <div class="col"><span class="label">N° Documento: </span><span class="value" id="lblTNumDocumento">{NUM_DOCUMENTO}</span></div>
+        </div>
+    </div>
+    <br />
+    <!-- Datos de la Constancia del Pago -->
+    <div class="section">
+        <div class="section-header">Datos de la Constancia del Pago</div>
+        <div class="row">
+            <div class="col"><span class="label">Fecha: </span><span class="value" id="lblFechaConstancia">{FECHA_CONSTANCIA}</span></div>
+            <div class="col"><span class="label">Método de pago: </span><span class="value" id="lblMetodoPago">{METODO_PAGO}</span></div>
+            <div class="col"><span class="label">Total: </span><span class="value" id="lblTotal">{TOTAL}</span></div>
+        </div>
+        <div class="row">
+            <div class="col full"><span class="label">Detalle de pago: </span><span class="value" id="lblDetallePago">{DETALLE_PAGO}</span></div>
+        </div>
+    </div>
+</body>
+</html>
